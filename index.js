@@ -1,15 +1,26 @@
-var db = require('./db/db');
+var database = require('./db/db');
 var io = require('socket.io')();
 var htmlToText = require('html-to-text');
 
-
+// set up listeners for incoming socket connections
 io.on('connection', function(socket){
+
   console.log('Socket connection established.');
+
+  socket.on('initialFetch', function(){
+    try {
+      database.db.once('value', function(data){
+        socket.emit(data);
+      })
+    } catch(err) {
+      console.log('failed to fetch data:', err)
+    }
+  })
 
   socket.on('updateFullTimeA', function(data){
     console.log(data.data);
     try {
-      db.setFullTimeEmailA(htmlToText.fromString(data.data, {wordwrap: 130}), data.data);
+      database.setFullTimeEmailA(htmlToText.fromString(data.data, {wordwrap: 130}), data.data);
     } catch(err) {
       console.log('failed to write to database:', err);
     }
@@ -18,7 +29,7 @@ io.on('connection', function(socket){
   socket.on('updateFullTimeB', function(data){
     console.log(data.data);
     try {
-      db.setFullTimeEmailB(htmlToText.fromString(data.data, {wordwrap: 130}), data.data);
+      database.setFullTimeEmailB(htmlToText.fromString(data.data, {wordwrap: 130}), data.data);
     } catch(err) {
       console.log('failed to write to database:', err);
     }
@@ -27,7 +38,7 @@ io.on('connection', function(socket){
   socket.on('updatePartTimeA', function(data){
     console.log(data.data);
     try {
-      db.setFullTimeEmailA(htmlToText.fromString(data.data, {wordwrap: 130}), data.data);
+      database.setPartTimeEmailA(htmlToText.fromString(data.data, {wordwrap: 130}), data.data);
     } catch(err) {
       console.log('failed to write to database:', err);
     }
@@ -36,7 +47,7 @@ io.on('connection', function(socket){
   socket.on('updatePartTimeB', function(data){
     console.log(data.data);
     try {
-      db.setFullTimeEmailB(htmlToText.fromString(data.data, {wordwrap: 130}), data.data);
+      database.setPartTimeEmailB(htmlToText.fromString(data.data, {wordwrap: 130}), data.data);
     } catch(err) {
       console.log('failed to write to database:', err);
     }
@@ -46,6 +57,24 @@ io.on('connection', function(socket){
 
 io.listen(3000);
 
-db.db.on('value', function(dataSnapshot){
-  console.log(dataSnapshot.val());
+// set up listeners for db changes
+database.db.child('/fullTime/emailA').on('change', function(dataSnapshot){
+    console.log(dataSnapshot.val());
+    io.emit('fullTimeEmailAChange', dataSnapshot);
 })
+
+database.db.child('/fullTime/emailB').on('change', function(dataSnapshot){
+    console.log(dataSnapshot.val());
+    io.emit('fullTimeEmailBChange', dataSnapshot);
+})
+
+database.db.child('/partTime/emailA').on('change', function(dataSnapshot){
+    console.log(dataSnapshot.val());
+    io.emit('fullTimeEmailAChange', dataSnapshot);
+})
+
+database.db.child('/partTime/emailB').on('change', function(dataSnapshot){
+    console.log(dataSnapshot.val());
+    io.emit('fullTimeEmailAChange', dataSnapshot);
+})
+

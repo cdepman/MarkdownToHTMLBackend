@@ -2,28 +2,28 @@ exports.schema = {
 
   fullTime: {
 
-    emaila: {
-      html: '',
-      markdown: '',
+    emailA: {
+      text: '',
+      html: ''
     },
 
-    emailb: {
-      html: '',
-      markdown: '',
+    emailB: {
+      text: '',
+      html: ''
     }
 
   },
 
   partTime: {
     
-    emaila: {
-      html: '',
-      markdown: '',
+    emailA: {
+      text: '',
+      html: ''
     },
     
-    emailb: {
-      html: '',
-      markdown: ''
+    emailB: {
+      text: '',
+      html: ''
     }
 
   }
