@@ -24,67 +24,42 @@ var onComplete = function(error) {
   }
 };
 
-var setFullTimeEmailAMarkdown = exports.setFullTimeEmailAMarkdown = function(markdown){
+var setFullTimeEmailA = exports.setFullTimeEmailA = function(text, html){
   emailStore.update({
     fullTime: { 
       emaila: { 
-        markdown: markdown
-      }
-    }
-  }, onComplete);
-}
-
-var setFullTimeEmailAHTML = exports.setFullTimeEmailAHTML = function(html){
-  emailStore.update({
-    fullTime: { 
-      emaila: { 
+        text: text,
         html: html
       }
     }
   }, onComplete);
 }
 
-var setFullTimeEmailBMarkdown = exports.setFullTimeEmailBMarkdown = function(markdown){
+var setFullTimeEmailB = exports.setFullTimeEmailB = function(text, html){
   emailStore.update({
     fullTime: { 
       emailb: { 
-        markdown: markdown
-      }
-    }
-  }, onComplete);
-}
-
-var setFullTimeEmailBHTML = exports.setFullTimeEmailBHTML = function(htmn){
-  emailStore.update({
-    fullTime: { 
-      emailb: { 
+        text: text,
         html: html
       }
     }
   }, onComplete);
 }
 
-var setPartTimeEmailAMarkdown = exports.setPartTimeEmailAMarkdown = function(markdown){
+var setPartTimeEmailA = exports.setPartTimeEmailA = function(text, html){
   emailStore.update({
     partTime: { 
       emaila: { 
+        text: text,
         html: html
       }
     }
   }, onComplete);
 }
 
-var setPartTimeEmailAHTML = exports.setPartTimeEmailAHTML = function(html){
-  emailStore.update({
-    partTime: { 
-      emaila: { 
-        html: html
-      }
-    }
-  }, onComplete);
-}
 
-var setPartTimeEmailBMarkdown = exports.setPartTimeEmailBMarkdown = function(markdown){
+
+var setPartTimeEmailB= exports.setPartTimeEmailB = function(text, html){
   emailStore.update({
     partTime: { 
       emailb: { 
