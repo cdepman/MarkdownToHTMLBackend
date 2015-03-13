@@ -11,11 +11,11 @@ emailStore.authWithCustomToken(fireBaseConfig.AUTH_TOKEN, function(error, result
   if (error) {
     console.log("Login Failed!", error);
   } else {
-    console.log("Authenticated successfully with payload:", result.auth);
-    console.log("Auth expires at:", new Date(result.expires * 1000));
+    console.log("Authenticated successfully!");
   }
 });
 
+// create db sync result callback
 var onComplete = function(error) {
   if (error) {
     console.log('Synchronization failed');
@@ -24,57 +24,32 @@ var onComplete = function(error) {
   }
 };
 
+// db setters for each email
 var setFullTimeEmailA = exports.setFullTimeEmailA = function(text, html){
-  emailStore.update({
-    fullTime: { 
-      emaila: { 
+  emailStore.child('/fullTime/emailA').update({ 
         text: text,
         html: html
-      }
-    }
-  }, onComplete);
+      }, onComplete);
 }
 
 var setFullTimeEmailB = exports.setFullTimeEmailB = function(text, html){
-  emailStore.update({
-    fullTime: { 
-      emailb: { 
+  emailStore.child('/fullTime/emailB').update({ 
         text: text,
         html: html
-      }
-    }
-  }, onComplete);
+      }, onComplete);
 }
 
 var setPartTimeEmailA = exports.setPartTimeEmailA = function(text, html){
-  emailStore.update({
-    partTime: { 
-      emaila: { 
+  emailStore.child('/partTime/emailA').update({ 
         text: text,
         html: html
-      }
-    }
-  }, onComplete);
+      }, onComplete);
 }
-
 
 
 var setPartTimeEmailB= exports.setPartTimeEmailB = function(text, html){
-  emailStore.update({
-    partTime: { 
-      emailb: { 
+  emailStore.child('/partTime/emailB').update({ 
+        text: text,
         html: html
-      }
-    }
-  }, onComplete);
-}
-
-var setPartTimeEmailBHTML = exports.setPartTimeEmailBHTML = function(html){
-  emailStore.update({
-    partTime: { 
-      emailb: { 
-        html: html
-      }
-    }
-  }, callback);
+      }, onComplete);
 }
