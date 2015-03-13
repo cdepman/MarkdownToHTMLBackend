@@ -1,0 +1,16 @@
+{
+  "name": "emailBackend",
+  "version": "1.0.0",
+  "description": "backend db connection for storing/accessing email templates",
+  "main": "index.js",
+  "dependencies": {
+    "bluebird": "^2.9.14",
+    "firebase": "^2.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Charlie Depman <cdepman@gmail.com> (http://cdepman.com/)",
+  "license": "ISC"
+}
