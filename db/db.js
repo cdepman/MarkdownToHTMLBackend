@@ -25,31 +25,35 @@ var onComplete = function(error) {
 };
 
 // db setters for each email
-var setFullTimeEmailA = exports.setFullTimeEmailA = function(text, html){
+var setFullTimeEmailA = exports.setFullTimeEmailA = function(text, html, markdown){
   emailStore.child('/fullTime/emailA').update({ 
         text: text,
-        html: html
+        html: html,
+        markdown: markdown
       }, onComplete);
 }
 
-var setFullTimeEmailB = exports.setFullTimeEmailB = function(text, html){
+var setFullTimeEmailB = exports.setFullTimeEmailB = function(text, html, markdown){
   emailStore.child('/fullTime/emailB').update({ 
         text: text,
-        html: html
+        html: html,
+        markdown: markdown
       }, onComplete);
 }
 
-var setPartTimeEmailA = exports.setPartTimeEmailA = function(text, html){
+var setPartTimeEmailA = exports.setPartTimeEmailA = function(text, html, markdown){
   emailStore.child('/partTime/emailA').update({ 
         text: text,
-        html: html
+        html: html,
+        markdown: markdown
       }, onComplete);
 }
 
 
-var setPartTimeEmailB= exports.setPartTimeEmailB = function(text, html){
+var setPartTimeEmailB= exports.setPartTimeEmailB = function(text, html, markdown){
   emailStore.child('/partTime/emailB').update({ 
         text: text,
-        html: html
+        html: html,
+        markdown: markdown
       }, onComplete);
 }

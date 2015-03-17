@@ -4,12 +4,14 @@ exports.schema = {
 
     emailA: {
       text: '',
-      html: ''
+      html: '',
+      markdown: ''
     },
 
     emailB: {
       text: '',
-      html: ''
+      html: '',
+      markdown: ''
     }
 
   },
@@ -18,12 +20,14 @@ exports.schema = {
     
     emailA: {
       text: '',
-      html: ''
+      html: '',
+      markdown: ''
     },
     
     emailB: {
       text: '',
-      html: ''
+      html: '',
+      markdown: ''
     }
 
   }
