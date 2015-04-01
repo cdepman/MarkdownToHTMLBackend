@@ -1,5 +1,4 @@
 var Firebase = require('firebase'); 
-var schema = require('./schema')
 var fireBaseConfig = require('../config.js').firebase;
 var Promise = require('bluebird');
 
